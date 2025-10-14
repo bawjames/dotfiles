@@ -13,7 +13,7 @@ mouse = false
 smart-tab.enable = false
 trim-final-newlines = true
 trim-trailing-whitespace = true
-
+text-width = 1000
 
 [editor.inline-diagnostics]
 cursor-line = "warning"
