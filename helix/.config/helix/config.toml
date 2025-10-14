@@ -1,0 +1,29 @@
+theme = "tinty"
+
+[editor]
+bufferline = "multiple"
+completion-replace = true
+completion-timeout = 5
+cursorline = true
+file-picker.hidden = false # Show hidden files in file picker.
+indent-guides.render = true
+line-number = "relative"
+middle-click-paste = false
+mouse = false
+smart-tab.enable = false
+trim-final-newlines = true
+trim-trailing-whitespace = true
+
+
+[editor.inline-diagnostics]
+cursor-line = "warning"
+other-lines = "error"
+
+[editor.soft-wrap]
+enable = true
+wrap-at-text-width = true
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"

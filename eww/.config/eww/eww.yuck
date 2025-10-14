@@ -1,0 +1,53 @@
+(defwidget just [text] (label :justify "center" :text text))
+(defwidget perc [s p] (just :text {s + "\\n" + (strlength(p) < 2 ? "0" + p : strlength(p) > 2 ? "99" : p)}))
+
+(deflisten workspace `./workspace.sh`)
+(defwidget workspaces []
+  { workspace == 1 ? "󰜋\\n󰜌\\n󰜌\\n󰜌\\n󰜌"
+  : workspace == 2 ? "󰜌\\n󰜋\\n󰜌\\n󰜌\\n󰜌"
+  : workspace == 3 ? "󰜌\\n󰜌\\n󰜋\\n󰜌\\n󰜌"
+  : workspace == 4 ? "󰜌\\n󰜌\\n󰜌\\n󰜋\\n󰜌"
+  : "󰜌\\n󰜌\\n󰜌\\n󰜌\\n󰜋" }
+)
+
+(defwidget clock [] (just :text {formattime(EWW_TIME, "%n%H%n%M%n%S%n%n%d%n%m%n%y")}))
+
+(defwidget cpu [] (perc :s "" :p {captures(EWW_CPU.avg, "\\.(..)")[0][1]}))
+
+(defwidget mem [] (perc :s "" :p {captures(EWW_RAM.used_mem_perc, "(.*)\\.")[0][1]}))
+
+(deflisten player `playerctl --follow status`)
+(deflisten volume `./volume.sh`)
+(defwidget sound [] (perc :s {player == "Playing" ? "" : ""} :p volume))
+
+(defwidget battery []
+  (just :text
+    { EWW_BATTERY.BAT0.capacity <= 9 ? "\\n0" + EWW_BATTERY.BAT0.capacity
+    : EWW_BATTERY.BAT0.capacity <= 20 ? "\\n" + EWW_BATTERY.BAT0.capacity
+    : EWW_BATTERY.BAT0.capacity <= 40 ? "\\n" + EWW_BATTERY.BAT0.capacity
+    : EWW_BATTERY.BAT0.capacity <= 60 ? "\\n" + EWW_BATTERY.BAT0.capacity
+    : EWW_BATTERY.BAT0.capacity <= 80 ? "\\n" + EWW_BATTERY.BAT0.capacity
+    : EWW_BATTERY.BAT0.capacity <= 99 ? "\\n" + EWW_BATTERY.BAT0.capacity
+    : "\\n" + 99 }
+  )
+)
+
+(defwindow sidebar
+  :monitor 0
+  :stacking "fg"
+  :geometry (geometry :x 0 :y 0 :width "25px" :height "100%" :anchor "center left")
+  :reserve (struts :distance "50px" :side "left")
+  :exclusive true
+  (centerbox
+    :orientation "v"
+    (box :orientation "v" :valign "start" :space-evenly false (just :class "archbtw" :text "") (workspaces))
+    (clock)
+    (box :orientation "v" :valign "end"
+      ; (net)
+      (mem)
+      (cpu)
+      (sound)
+      (battery)
+    )
+  )
+)

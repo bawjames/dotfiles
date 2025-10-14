@@ -1,0 +1,19 @@
+@import "base16.css";
+
+/* .archbtw { */
+/* color: red; */
+/* } */
+
+* {
+  /* Font */
+  font-family: "SauceCodePro NFP";
+
+  /* Spacing */
+  padding: 0px;
+  margin: 1px;
+
+  /* Colour */
+  background-color: @base01;
+  color: @base05;
+  border: none;
+}

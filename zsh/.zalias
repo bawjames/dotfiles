@@ -1,0 +1,20 @@
+#!/bin/zsh
+
+# function mkalias() {
+#   if [ $# -eq 0 ]; then
+#     echo "Usage: mkalias alias_name='command'"
+#     return 1
+#   fi
+
+#   printf '%q ' "alias $@" >> ~/.zalias
+#   echo "Alias appended to ~/.zalias:\n  alias $@"
+
+#   # source ~/.zalias
+# }
+
+alias hx='helix'
+alias ls='eza'
+alias sz='source ~/.zshrc'
+alias c='clear'
+alias grep='grep --color=auto'
+alias ff='clear; fastfetch'

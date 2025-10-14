@@ -1,0 +1,36 @@
+# Global settings
+shell = "zsh -c '{}'"
+default-scheme = "base16-sandcastle"
+preferred-schemes = []
+
+# [[items]]
+# name = "tinted-shell"
+# path = "https://github.com/tinted-theming/tinted-shell"
+# themes-dir = "scripts"
+# hook = "source \"$TINTY_THEME_FILE_PATH\""
+# supported-systems = ["base16"]
+
+[[items]]
+name = "tinted-helix"
+path = "https://github.com/tinted-theming/base16-helix"
+themes-dir = "themes"
+hook = "cat $TINTY_THEME_FILE_PATH > ~/.config/helix/themes/tinty.toml; pkill -USR1 helix"
+
+[[items]]
+name = "base24-css-etc"
+path = "https://github.com/tinted-theming/base16-waybar"
+themes-dir = "colors"
+hook = "cat $TINTY_THEME_FILE_PATH > ~/.config/eww/base16.css"
+
+[[items]]
+path = "https://github.com/tinted-theming/tinted-terminal"
+name = "tinted-terminal"
+themes-dir = "themes/alacritty"
+hook = "cp -f %f ~/.config/alacritty/colors.toml && touch ~/.config/alacritty/colors.toml"
+
+[[items]]
+name = "tmux"
+path = "https://github.com/tinted-theming/tinted-tmux"
+themes-dir = "colors"
+hook = "tmux run 2> /dev/null && tmux source-file \"$TINTY_THEME_FILE_PATH\""
+supported-systems = ["base16"]
