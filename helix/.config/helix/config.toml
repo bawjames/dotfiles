@@ -1,26 +1,26 @@
 theme = "tinty"
 
 [editor]
-bufferline = "multiple"
+# bufferline = "multiple"
 completion-replace = true
 completion-timeout = 5
 cursorline = true
 file-picker.hidden = false # Show hidden files in file picker.
-indent-guides.render = true
+# indent-guides.render = true
 line-number = "relative"
 middle-click-paste = false
 mouse = false
 smart-tab.enable = false
 trim-final-newlines = true
 trim-trailing-whitespace = true
-text-width = 1000
 
 [editor.inline-diagnostics]
 cursor-line = "warning"
-other-lines = "error"
+max-diagnostics = 1
 
 [editor.soft-wrap]
 enable = true
+# max-indent-retain = 80
 wrap-at-text-width = true
 
 [editor.cursor-shape]

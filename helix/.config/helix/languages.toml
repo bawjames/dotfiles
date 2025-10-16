@@ -14,4 +14,7 @@ args =   [ "--synctex-forward", "%l:1:%f", "%p" ]
 forwardSearchAfter = true
 onSave = true
 executable = "tectonic"
-args = [ "-X", "compile", "--synctex", "--keep-logs", "--keep-intermediates", "%f"]
+args = [ "-X", "compile", "--synctex", "--keep-logs", "--keep-intermediates", "%f" ]
+
+# [language-server.omnisharp.config.FormattingOptions]
+# IndentSwitchCaseSectionWhenBlock = false
